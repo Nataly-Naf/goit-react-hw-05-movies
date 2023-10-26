@@ -1,4 +1,5 @@
 import { GetTrandingMovies } from 'components/Api/Api';
+import { AudioItem } from 'components/Loader/Loader';
 import { TrandedMovieGallery } from 'components/TrandedMovieGallery/TrandedMovieGallery';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -8,7 +9,6 @@ export default function HomePage() {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     // if (query === '') {
@@ -33,8 +33,8 @@ export default function HomePage() {
   return (
     <div>
       <h1>Welcome!</h1>
+      {loading && <AudioItem />}
       <TrandedMovieGallery onMovies={movies} />
-      {/* <li>{ }</li> */}
     </div>
   );
 }

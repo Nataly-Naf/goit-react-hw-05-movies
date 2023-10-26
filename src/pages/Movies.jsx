@@ -1,10 +1,11 @@
-import { getMovieById } from 'components/Api/Api';
+import { getMovieByName } from 'components/Api/Api';
 import { MovieList } from 'components/MovieList/MovieList';
 import { Searchbar } from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import ClipLoader from 'react-spinners/ClipLoader';
 
-console.log(getMovieById('batman'));
+console.log(getMovieByName('batman'));
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
@@ -25,7 +26,7 @@ export const Movies = () => {
         setMovies([]);
         setError(false);
         setLoading(true);
-        const newMovies = await getMovieById(query);
+        const newMovies = await getMovieByName(query);
         console.log(newMovies);
         toast.success('We have found pictures');
         setMovies(prevState => [...prevState, ...newMovies]);
@@ -41,6 +42,7 @@ export const Movies = () => {
   return (
     <div>
       <Searchbar onSubmitForm={onSubmitForm} />
+      {loading && ClipLoader}
       <MovieList onMovies={movies} />
     </div>
   );
