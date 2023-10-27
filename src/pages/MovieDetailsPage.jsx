@@ -17,8 +17,8 @@ export const MovieDetails = () => {
     }
     getMovie();
   }, [movieId]);
-  const defaultImg =
-    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+  // const defaultImg =
+  //   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   return (
     movie && (
       <div>
@@ -43,7 +43,7 @@ export const MovieDetails = () => {
         </p>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to={'cast'}>Cast</Link>
           </li>
           <li>
             <Link to={`/movies/${movie.id}/review`}>Review</Link>

@@ -23,6 +23,7 @@ export default function HomePage() {
         setMovies(prevState => [...prevState, ...newTrandingMovies]);
       } catch (error) {
         setError(true);
+        console.log(error);
       } finally {
         setLoading(false);
       }
