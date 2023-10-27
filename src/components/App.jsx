@@ -8,7 +8,8 @@ import HomePage from 'pages/HomePage';
 import { MovieDetails } from 'pages/MovieDetailsPage';
 import { Movies } from 'pages/MoviesPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
-import { MovieCast } from 'pages/MovieCastPage';
+import { MovieCast } from './Cast/Cast';
+import { MovieReviews } from './Reviews/Reviews';
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -29,7 +30,7 @@ export const App = () => {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<MovieCast />} />
-          <Route path="review" element={<div>B</div>} />
+          <Route path="review" element={<MovieReviews />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

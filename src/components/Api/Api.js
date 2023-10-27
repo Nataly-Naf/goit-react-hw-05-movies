@@ -27,19 +27,15 @@ export const getMovieById = async id => {
 
 export const getCastById = async id => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=${api_key}`
+    `${baseUrl}movie/${id}/credits?language=en-US&api_key=${api_key}`
   )
   return response.data;
 }
 
-// fetch('https://api.themoviedb.org/3/movie/movie_id/credits?language=en-US', options)
-//   .then(response => response.json())
-//   .then(response => console.log(response))
-//   .catch(err => console.error(err));
+export const getReviewById = async id => {
+  const response = await axios.get(
+    `${baseUrl}movie/${id}/reviews?language=en-US&api_key=${api_key}`
+  )
+  return response.data;
+}
 
-// export const getReviewById = async id => {
-//   const response = await axios.get(
-//     `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${api_key}`
-//   )
-//   return response.data;
-// }

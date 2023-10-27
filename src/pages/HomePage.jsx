@@ -36,7 +36,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Welcome!</h1>
+      <h1>Trending today</h1>
       {loading && <AudioItem />}
       <TrandedMovieGallery onMovies={movies} />
     </div>

@@ -1,4 +1,9 @@
+import { MovieListItem } from "./MovieItem.styled"
+
 export const MovieItem =  ({onMovieItem}) => {
-    return <div>{onMovieItem.original_title}</div>
+    return <MovieListItem>{onMovieItem.original_title}</MovieListItem>
         
 }
+
+
+

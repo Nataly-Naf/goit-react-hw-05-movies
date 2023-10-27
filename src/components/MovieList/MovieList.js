@@ -1,13 +1,14 @@
+import { Link, useLocation} from 'react-router-dom';
 import { MovieItem } from 'components/MovieItem/MovieItem';
-import { Link } from 'react-router-dom';
 
 export const MovieList = ({ onMovies }) => {
-
+  const location = useLocation()
+  console.log(location)
   return (
     <ul>
       {onMovies.map(movie => {
         return (
-          <Link to={`/movies/${movie.id}`}>
+          <Link to={`/movies/${movie.id}`} state={{from:location}}>
             <MovieItem onMovieItem={movie} />
           </Link>
         );
@@ -15,3 +16,4 @@ export const MovieList = ({ onMovies }) => {
     </ul>
   );
 };
+

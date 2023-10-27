@@ -4,19 +4,24 @@ import { Searchbar } from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [movies, setMovies] = useState([]);
-  console.log(error);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  console.log(error, setQuery);
   const onSubmitForm = value => {
-    setQuery(value);
+    const nextParams = value !== '' ? { query: value } : {};
+    setSearchParams(nextParams);
   };
+  const queryFromUrl = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (query === '') {
+    if (queryFromUrl === '') {
       return;
     }
     async function getMovie() {
@@ -24,8 +29,7 @@ export const Movies = () => {
         setMovies([]);
         setError(false);
         setLoading(true);
-        const newMovies = await getMovieByName(query);
-        console.log(newMovies);
+        const newMovies = await getMovieByName(queryFromUrl);
         toast.success('We have found pictures');
         setMovies(prevState => [...prevState, ...newMovies]);
       } catch (error) {
@@ -35,8 +39,7 @@ export const Movies = () => {
       }
     }
     getMovie();
-  }, [query]);
-
+  }, [queryFromUrl, query]);
   return (
     <div>
       <Searchbar onSubmitForm={onSubmitForm} />

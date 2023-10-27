@@ -1,12 +1,22 @@
 import { getMovieById } from 'components/Api/Api';
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { FaArrowAltCircleLeft } from 'react-icons/fa';
+import {
+  AddInfoWrapper,
+  DescrSubtitle,
+  DescrTitle,
+  DescrWrapper,
+  InfoSubtitle,
+  MovieItemMainDescr,
+} from 'components/MovieItem/MovieItem.styled';
 
 export const MovieDetails = () => {
   const params = useParams();
   const movieId = params.movieId;
   const [movie, setMovie] = useState();
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location?.state?.from ?? '/');
 
   useEffect(() => {
     async function getMovie() {
@@ -17,38 +27,50 @@ export const MovieDetails = () => {
     }
     getMovie();
   }, [movieId]);
-  // const defaultImg =
-  //   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
+  const defaultImg =
+    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   return (
     movie && (
       <div>
-        <Link to={'/movies'}>
+        <Link to={backLinkLocationRef.current}>
           <FaArrowAltCircleLeft />
           Go back
         </Link>
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          width={250}
-          alt="poster"
-        />
-        <h2>{movie.original_title}</h2>
-        <p>User score: {movie.popularity}</p>
-        <p>Overview: {movie.overview}</p>
-        <p>
-          Genres:{' '}
-          {movie.genres.map(genre => {
-            return `${genre.name} `;
-          })}
-          ,
-        </p>
-        <ul>
+        <DescrWrapper>
+          <img
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : defaultImg
+            }
+            width={250}
+            alt="poster"
+          />
+          <MovieItemMainDescr>
+            <DescrTitle>{movie.original_title}</DescrTitle>
+            <p>User score: {movie.popularity * 100}%</p>
+            <DescrSubtitle>Overview</DescrSubtitle>
+            <p>{movie.overview}</p>
+            <DescrSubtitle>Genres</DescrSubtitle>
+
+            <p>
+              {movie.genres.map(genre => {
+                return `${genre.name}  `;
+              })}
+              ,
+            </p>
+          </MovieItemMainDescr>
+        </DescrWrapper>
+        <AddInfoWrapper>
+          <InfoSubtitle>Additional information</InfoSubtitle>
           <li>
             <Link to={'cast'}>Cast</Link>
           </li>
           <li>
-            <Link to={`/movies/${movie.id}/review`}>Review</Link>
+            <Link to={'review'}>Review</Link>
           </li>
-        </ul>
+        </AddInfoWrapper>
         <Outlet />
       </div>
     )

@@ -14,13 +14,10 @@ top: 0;
   padding-top: 5px;
   padding-bottom: 6px;
   color: #fff;
-  background-color: #3f51b5;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
+     margin-top: 30px;
 `
 
 export const SearchInput = styled.input`
