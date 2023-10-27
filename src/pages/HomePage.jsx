@@ -10,6 +10,9 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  console.log(setQuery);
+  console.log(error);
+
   useEffect(() => {
     // if (query === '') {
     //   return;

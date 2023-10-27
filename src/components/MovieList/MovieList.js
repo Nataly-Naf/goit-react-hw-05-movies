@@ -1,10 +1,8 @@
 import { MovieItem } from 'components/MovieItem/MovieItem';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const MovieList = ({ onMovies }) => {
-     const [params, setParams] = useSearchParams();
- 
-  console.log(params)
+
   return (
     <ul>
       {onMovies.map(movie => {
