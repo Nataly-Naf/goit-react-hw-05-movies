@@ -4,8 +4,7 @@ import { Searchbar } from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
-
-console.log(getMovieByName('batman'));
+import { useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
   const [query, setQuery] = useState('');

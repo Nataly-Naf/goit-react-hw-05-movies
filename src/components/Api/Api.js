@@ -25,7 +25,21 @@ export const getMovieById = async id => {
   return response.data;
 }
 
-// fetch('https://api.themoviedb.org/3/movie/111?language=en-US', options)
+export const getCastById = async id => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=${api_key}`
+  )
+  return response.data;
+}
+
+// fetch('https://api.themoviedb.org/3/movie/movie_id/credits?language=en-US', options)
 //   .then(response => response.json())
 //   .then(response => console.log(response))
 //   .catch(err => console.error(err));
+
+// export const getReviewById = async id => {
+//   const response = await axios.get(
+//     `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${api_key}`
+//   )
+//   return response.data;
+// }

@@ -1,12 +1,11 @@
 import { getMovieById } from 'components/Api/Api';
-import { MovieItem } from 'components/MovieItem/MovieItem';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
+import { FaArrowAltCircleLeft } from 'react-icons/fa';
 
 export const MovieDetails = () => {
   const params = useParams();
   const movieId = params.movieId;
-  console.log(movieId);
   const [movie, setMovie] = useState();
 
   useEffect(() => {
@@ -14,7 +13,6 @@ export const MovieDetails = () => {
       try {
         const fetchedMovie = await getMovieById(movieId);
         setMovie(fetchedMovie);
-        console.log(fetchedMovie);
       } catch (error) {}
     }
     getMovie();
@@ -24,6 +22,10 @@ export const MovieDetails = () => {
   return (
     movie && (
       <div>
+        <Link to={'/movies'}>
+          <FaArrowAltCircleLeft />
+          Go back
+        </Link>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           width={250}
@@ -41,12 +43,13 @@ export const MovieDetails = () => {
         </p>
         <ul>
           <li>
-            <Link to={`"/movies/${movie.id}/cast"`}>Cast</Link>
+            <Link to="cast">Cast</Link>
           </li>
           <li>
-            <Link to={`"/movies/${movie.id}/review"`}>Review</Link>
+            <Link to={`/movies/${movie.id}/review`}>Review</Link>
           </li>
         </ul>
+        <Outlet />
       </div>
     )
   );

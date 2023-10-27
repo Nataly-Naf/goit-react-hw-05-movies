@@ -1,8 +1,15 @@
+import { useSearchParams } from "react-router-dom";
 import { SearchButton, SearchForm, SearchInput } from "./SearchBar.styled.js";
 
+
+
+
 export const Searchbar = ({ onSubmitForm }) => {
+   
+  
    return <header>
-  <SearchForm onSubmit={evt => {
+     <SearchForm onSubmit={evt => {
+       
          evt.preventDefault();
                onSubmitForm(evt.target[1].value)
        }}  >
@@ -15,6 +22,7 @@ export const Searchbar = ({ onSubmitForm }) => {
       autoFocus
       placeholder="Search images and photos"
     />
-  </SearchForm>
+     </SearchForm>
+    
 </header>
 }

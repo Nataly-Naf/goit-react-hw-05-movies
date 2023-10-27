@@ -4,10 +4,11 @@ import { Route, Routes, NavLink } from 'react-router-dom';
 // import Products from 'path/to/pages/Products';
 // import NotFound from 'path/to/pages/NotFound';
 import styled from 'styled-components';
-import HomePage from 'pages/Home';
-import { MovieDetails } from 'pages/MovieDetails';
-import { Movies } from 'pages/Movies';
+import HomePage from 'pages/HomePage';
+import { MovieDetails } from 'pages/MovieDetailsPage';
+import { Movies } from 'pages/MoviesPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
+import { MovieCast } from 'pages/MovieCastPage';
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -16,7 +17,6 @@ const StyledLink = styled(NavLink)`
     color: orange;
   }
 `;
-
 export const App = () => {
   return (
     <div>
@@ -28,8 +28,8 @@ export const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="/movies/:movieId/cast" element={<div>A</div>} />
-          <Route path="/movies/:movieId/reviews" element={<div>B</div>} />
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="review" element={<div>B</div>} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
