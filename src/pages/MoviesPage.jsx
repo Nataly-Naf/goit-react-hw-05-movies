@@ -4,14 +4,13 @@ import { Searchbar } from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [movies, setMovies] = useState([]);
-
+  console.log(error);
   const onSubmitForm = value => {
     setQuery(value);
   };

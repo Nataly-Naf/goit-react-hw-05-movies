@@ -14,7 +14,6 @@ export const MovieCast = () => {
       try {
         const fetchedMovie = await getCastById(movieId);
         console.log(fetchedMovie.cast);
-
         setCast(fetchedMovie.cast);
         console.log(cast);
       } catch (error) {}
