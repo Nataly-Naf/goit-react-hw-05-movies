@@ -26,7 +26,7 @@ export const MovieReviews = () => {
       }
     }
     getReview();
-  }, [movieId, review]);
+  }, [movieId]);
     
     if (review.length === 0) {
              return "We don't have any review on this movie"
