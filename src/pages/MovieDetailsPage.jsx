@@ -11,7 +11,7 @@ import {
   MovieItemMainDescr,
 } from 'components/MovieItem/MovieItem.styled';
 
-export const MovieDetails = () => {
+export default function MovieDetailsPage() {
   const params = useParams();
   const movieId = params.movieId;
   const [movie, setMovie] = useState();
@@ -75,4 +75,4 @@ export const MovieDetails = () => {
       </div>
     )
   );
-};
+}

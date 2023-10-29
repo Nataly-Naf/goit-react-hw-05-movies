@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { useSearchParams } from 'react-router-dom';
 
-export const Movies = () => {
+export default function MoviesPage() {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -47,4 +47,4 @@ export const Movies = () => {
       <MovieList onMovies={movies} />
     </div>
   );
-};
+}
