@@ -27,7 +27,7 @@ export const MovieCast = () => {
       }
     }
     getCast();
-  }, [movieId, cast]);
+  }, [movieId]);
 
   return (
     <div>

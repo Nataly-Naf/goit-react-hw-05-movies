@@ -49,7 +49,7 @@ export default function MovieDetailsPage() {
           />
           <MovieItemMainDescr>
             <DescrTitle>{movie.original_title}</DescrTitle>
-            <p>User score: {movie.popularity * 100}%</p>
+            <p>User score: {movie.vote_count}%</p>
             <DescrSubtitle>Overview</DescrSubtitle>
             <p>{movie.overview}</p>
             <DescrSubtitle>Genres</DescrSubtitle>
